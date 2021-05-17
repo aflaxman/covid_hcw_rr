@@ -9,12 +9,11 @@ date_fmt = "%B %-d, %Y"
 
 
 def load_data():
-    df = pd.read_csv('data/fb_data_usa.csv', index_col=0, low_memory=False)
+    df = pd.read_csv('data/fb_data_usa.csv.bz2', index_col=0, low_memory=False)
     df['date'] = df.date.map(pd.Timestamp)
 
-    min_date = df.date.min()
-    most_recent_data_date = df.date.max()
-    data_start_date = max(min_date, most_recent_data_date - pd.Timedelta(days=6 * 7))
+    start_date = pd.Timestamp('2020-09-08')
+    end_date = pd.Timestamp('2020-10-20')
 
     return locals()
 
